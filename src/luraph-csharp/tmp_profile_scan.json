@@ -1,0 +1,27 @@
+{
+    "booleanAsVarInt":  true,
+    "stringTag":  240,
+    "protoFormat":  1,
+    "lcgMultiplier":  65,
+    "instructionsOffset":  0,
+    "bootstrapSkipBytes":  0,
+    "dispatchMode":  1,
+    "charTableInitState":  0,
+    "integerTag":  null,
+    "constantsOffset":  22172,
+    "twoChunk":  false,
+    "charTableXorMask":  127,
+    "prototypesOffset":  98456,
+    "lcgIncrement":  117,
+    "operandModes":  {
+                         "2":  "closureRef",
+                         "4":  "relBackward",
+                         "1":  "relForward",
+                         "0":  "constant",
+                         "7":  "register"
+                     },
+    "name":  "scan",
+    "decryptStrings":  true,
+    "applyConstantTransforms":  false,
+    "floatTag":  82
+}

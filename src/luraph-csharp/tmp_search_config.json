@@ -1,0 +1,26 @@
+{
+    "name":  "tmp",
+    "constantsOffset":  12746,
+    "prototypesOffset":  98456,
+    "instructionsOffset":  22172,
+    "dispatchMode":  2,
+    "stringTag":  13,
+    "integerTag":  199,
+    "protoFormat":  2,
+    "twoChunk":  false,
+    "bootstrapSkipBytes":  96,
+    "decryptStrings":  true,
+    "charTableInitState":  0,
+    "charTableXorMask":  127,
+    "lcgMultiplier":  65,
+    "lcgIncrement":  117,
+    "applyConstantTransforms":  true,
+    "operandModes":  {
+                         "6":  "register",
+                         "5":  "constant",
+                         "0":  "resolvedConst",
+                         "1":  "relBackward",
+                         "2":  "relForward",
+                         "7":  "protoIndex"
+                     }
+}

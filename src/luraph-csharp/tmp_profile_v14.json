@@ -1,0 +1,27 @@
+{
+  "name": "test-v14",
+  "constantsOffset": 22172,
+  "prototypesOffset": 98456,
+  "instructionsOffset": 12746,
+  "dispatchMode": 1,
+  "floatTag": 82,
+  "stringTag": 240,
+  "integerTag": null,
+  "protoFormat": 2,
+  "twoChunk": false,
+  "bootstrapSkipBytes": 0,
+  "decryptStrings": true,
+  "charTableInitState": 0,
+  "charTableXorMask": 127,
+  "lcgMultiplier": 65,
+  "lcgIncrement": 117,
+  "applyConstantTransforms": false,
+  "booleanAsVarInt": true,
+  "operandModes": {
+    "0": "constant",
+    "1": "relForward",
+    "2": "closureRef",
+    "4": "relBackward",
+    "7": "register"
+  }
+}

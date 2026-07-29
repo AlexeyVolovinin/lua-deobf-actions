@@ -1,0 +1,26 @@
+{
+    "name":  "m3f3",
+    "constantsOffset":  22172,
+    "prototypesOffset":  12746,
+    "instructionsOffset":  98456,
+    "dispatchMode":  3,
+    "floatTag":  240,
+    "stringTag":  149,
+    "integerTag":  143,
+    "protoFormat":  3,
+    "twoChunk":  true,
+    "bootstrapSkipBytes":  101,
+    "decryptStrings":  false,
+    "charTableInitState":  0,
+    "charTableXorMask":  127,
+    "lcgMultiplier":  65,
+    "lcgIncrement":  117,
+    "applyConstantTransforms":  false,
+    "operandModes":  {
+                         "0":  "constant",
+                         "1":  "relForward",
+                         "2":  "closureRef",
+                         "4":  "relBackward",
+                         "7":  "register"
+                     }
+}

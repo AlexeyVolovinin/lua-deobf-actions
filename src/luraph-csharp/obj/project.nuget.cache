@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "/Tle78sMdTw=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\hshsn\\Downloads\\LuraphDeobfuscator (1)\\LuraphDeobfuscator\\LuraphDeobfuscator.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\hshsn\\.nuget\\packages\\microsoft.netcore.app.ref\\9.0.14\\microsoft.netcore.app.ref.9.0.14.nupkg.sha512",
+    "C:\\Users\\hshsn\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\9.0.14\\microsoft.windowsdesktop.app.ref.9.0.14.nupkg.sha512",
+    "C:\\Users\\hshsn\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\9.0.14\\microsoft.aspnetcore.app.ref.9.0.14.nupkg.sha512",
+    "C:\\Users\\hshsn\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\9.0.14\\microsoft.netcore.app.host.win-x64.9.0.14.nupkg.sha512"
+  ],
+  "logs": []
+}

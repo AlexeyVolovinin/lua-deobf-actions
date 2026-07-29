@@ -1,0 +1,1409 @@
+{
+  "name": "dynamic:hooks",
+  "constantsOffset": 36838,
+  "prototypesOffset": 27027,
+  "instructionsOffset": 65336,
+  "dispatchMode": 2,
+  "stringTag": 13,
+  "integerTag": 199,
+  "protoFormat": 2,
+  "twoChunk": true,
+  "bootstrapSkipBytes": 101,
+  "operandModes": {
+    "6": "register",
+    "5": "constant",
+    "0": "resolvedConst",
+    "1": "relBackward",
+    "2": "relForward",
+    "7": "protoIndex"
+  },
+  "decryptStrings": true,
+  "charTableInitState": 0,
+  "charTableXorMask": 127,
+  "lcgMultiplier": 65,
+  "lcgIncrement": 117,
+  "applyConstantTransforms": true,
+  "booleanAsVarInt": false,
+  "opcodeMap": {
+    "12": {
+      "type": "Move",
+      "dst": "regA",
+      "src1": "regB",
+      "src2": "none",
+      "target": "none",
+      "invert": false
+    },
+    "82": {
+      "type": "Move",
+      "dst": "regA",
+      "src1": "nil",
+      "src2": "none",
+      "target": "none",
+      "invert": false
+    },
+    "20": {
+      "type": "NilRange",
+      "dst": "none",
+      "src1": "regB",
+      "src2": "regC",
+      "target": "none",
+      "invert": false
+    },
+    "158": {
+      "type": "NilRange",
+      "dst": "none",
+      "src1": "regB",
+      "src2": "regC",
+      "target": "none",
+      "invert": false
+    },
+    "95": {
+      "type": "Move",
+      "dst": "regB",
+      "src1": "opC",
+      "src2": "none",
+      "target": "none",
+      "invert": false
+    },
+    "154": {
+      "type": "Nop",
+      "dst": "none",
+      "src1": "none",
+      "src2": "none",
+      "target": "none",
+      "invert": false,
+      "comment": "LOADK_HELPER"
+    },
+    "50": {
+      "type": "GetGlobal",
+      "dst": "regA",
+      "src1": "opB",
+      "src2": "none",
+      "target": "none",
+      "invert": false
+    },
+    "111": {
+      "type": "SetGlobal",
+      "dst": "none",
+      "src1": "opC",
+      "src2": "regA",
+      "target": "none",
+      "invert": false
+    },
+    "84": {
+      "type": "SetGlobal",
+      "dst": "none",
+      "src1": "opA",
+      "src2": "opB",
+      "target": "none",
+      "invert": false
+    },
+    "51": {
+      "type": "GetTable",
+      "dst": "regC",
+      "src1": "regA",
+      "src2": "regB",
+      "target": "none",
+      "invert": false
+    },
+    "136": {
+      "type": "GetTable",
+      "dst": "regC",
+      "src1": "regA",
+      "src2": "opB",
+      "target": "none",
+      "invert": false
+    },
+    "48": {
+      "type": "SetTable",
+      "dst": "regA",
+      "src1": "regB",
+      "src2": "regC",
+      "target": "none",
+      "invert": false
+    },
+    "8": {
+      "type": "SetTable",
+      "dst": "regA",
+      "src1": "regC",
+      "src2": "opB",
+      "target": "none",
+      "invert": false
+    },
+    "132": {
+      "type": "SetTable",
+      "dst": "regA",
+      "src1": "opB",
+      "src2": "opC",
+      "target": "none",
+      "invert": false
+    },
+    "193": {
+      "type": "SetTable",
+      "dst": "regC",
+      "src1": "opA",
+      "src2": "regB",
+      "target": "none",
+      "invert": false
+    },
+    "27": {
+      "type": "NewTable",
+      "dst": "regA",
+      "src1": "none",
+      "src2": "none",
+      "target": "none",
+      "invert": false
+    },
+    "37": {
+      "type": "NewTable",
+      "dst": "regC",
+      "src1": "none",
+      "src2": "none",
+      "target": "none",
+      "invert": false
+    },
+    "10": {
+      "type": "GetUpval",
+      "dst": "regC",
+      "src1": "upvalB",
+      "src2": "none",
+      "target": "none",
+      "invert": false
+    },
+    "129": {
+      "type": "GetUpval",
+      "dst": "regB",
+      "src1": "upvalC",
+      "src2": "none",
+      "target": "none",
+      "invert": false
+    },
+    "105": {
+      "type": "GetTable",
+      "dst": "regA",
+      "src1": "upvalB",
+      "src2": "opC",
+      "target": "none",
+      "invert": false
+    },
+    "78": {
+      "type": "GetTable",
+      "dst": "regA",
+      "src1": "upvalC",
+      "src2": "regB",
+      "target": "none",
+      "invert": false
+    },
+    "25": {
+      "type": "GetTable",
+      "dst": "regA",
+      "src1": "upvalC",
+      "src2": "opB",
+      "target": "none",
+      "invert": false
+    },
+    "17": {
+      "type": "GetTable",
+      "dst": "regC",
+      "src1": "upvalB",
+      "src2": "regA",
+      "target": "none",
+      "invert": false
+    },
+    "151": {
+      "type": "SetUpval",
+      "dst": "upvalB",
+      "src1": "regA",
+      "src2": "none",
+      "target": "none",
+      "invert": false
+    },
+    "43": {
+      "type": "SetUpval",
+      "dst": "upvalA",
+      "src1": "opC",
+      "src2": "none",
+      "target": "none",
+      "invert": false
+    },
+    "64": {
+      "type": "SetTable",
+      "dst": "upvalC",
+      "src1": "regB",
+      "src2": "regA",
+      "target": "none",
+      "invert": false
+    },
+    "119": {
+      "type": "SetTable",
+      "dst": "upvalC",
+      "src1": "regB",
+      "src2": "regA",
+      "target": "none",
+      "invert": false
+    },
+    "172": {
+      "type": "SetTable",
+      "dst": "upvalA",
+      "src1": "opC",
+      "src2": "regB",
+      "target": "none",
+      "invert": false
+    },
+    "180": {
+      "type": "SetTable",
+      "dst": "upvalC",
+      "src1": "regA",
+      "src2": "opB",
+      "target": "none",
+      "invert": false
+    },
+    "80": {
+      "type": "BinOp",
+      "kind": "Add",
+      "dst": "regB",
+      "src1": "regC",
+      "src2": "regA",
+      "target": "none",
+      "invert": false
+    },
+    "143": {
+      "type": "BinOp",
+      "kind": "Sub",
+      "dst": "regA",
+      "src1": "regB",
+      "src2": "regC",
+      "target": "none",
+      "invert": false
+    },
+    "39": {
+      "type": "BinOp",
+      "kind": "Mul",
+      "dst": "regB",
+      "src1": "regC",
+      "src2": "regA",
+      "target": "none",
+      "invert": false
+    },
+    "83": {
+      "type": "BinOp",
+      "kind": "Div",
+      "dst": "regC",
+      "src1": "regB",
+      "src2": "regA",
+      "target": "none",
+      "invert": false
+    },
+    "65": {
+      "type": "BinOp",
+      "kind": "Mod",
+      "dst": "regB",
+      "src1": "regC",
+      "src2": "regA",
+      "target": "none",
+      "invert": false
+    },
+    "133": {
+      "type": "BinOp",
+      "kind": "Add",
+      "dst": "regC",
+      "src1": "regA",
+      "src2": "opB",
+      "target": "none",
+      "invert": false
+    },
+    "45": {
+      "type": "BinOp",
+      "kind": "Sub",
+      "dst": "regA",
+      "src1": "regC",
+      "src2": "opB",
+      "target": "none",
+      "invert": false
+    },
+    "97": {
+      "type": "BinOp",
+      "kind": "Mul",
+      "dst": "regB",
+      "src1": "regA",
+      "src2": "opC",
+      "target": "none",
+      "invert": false
+    },
+    "168": {
+      "type": "BinOp",
+      "kind": "Div",
+      "dst": "regB",
+      "src1": "regA",
+      "src2": "opC",
+      "target": "none",
+      "invert": false
+    },
+    "3": {
+      "type": "BinOp",
+      "kind": "Mod",
+      "dst": "regC",
+      "src1": "regA",
+      "src2": "opB",
+      "target": "none",
+      "invert": false
+    },
+    "94": {
+      "type": "BinOp",
+      "kind": "IDiv",
+      "dst": "regA",
+      "src1": "regB",
+      "src2": "opC",
+      "target": "none",
+      "invert": false
+    },
+    "177": {
+      "type": "BinOp",
+      "kind": "Pow",
+      "dst": "regB",
+      "src1": "regC",
+      "src2": "opA",
+      "target": "none",
+      "invert": false
+    },
+    "92": {
+      "type": "BinOp",
+      "kind": "Add",
+      "dst": "regA",
+      "src1": "opC",
+      "src2": "regB",
+      "target": "none",
+      "invert": false
+    },
+    "54": {
+      "type": "BinOp",
+      "kind": "Sub",
+      "dst": "regA",
+      "src1": "opC",
+      "src2": "regB",
+      "target": "none",
+      "invert": false
+    },
+    "117": {
+      "type": "BinOp",
+      "kind": "Mul",
+      "dst": "regB",
+      "src1": "opC",
+      "src2": "regA",
+      "target": "none",
+      "invert": false
+    },
+    "86": {
+      "type": "BinOp",
+      "kind": "Div",
+      "dst": "regC",
+      "src1": "opA",
+      "src2": "regB",
+      "target": "none",
+      "invert": false
+    },
+    "32": {
+      "type": "BinOp",
+      "kind": "Pow",
+      "dst": "regB",
+      "src1": "opA",
+      "src2": "regC",
+      "target": "none",
+      "invert": false
+    },
+    "19": {
+      "type": "BinOp",
+      "kind": "Add",
+      "dst": "regA",
+      "src1": "opC",
+      "src2": "opB",
+      "target": "none",
+      "invert": false
+    },
+    "161": {
+      "type": "BinOp",
+      "kind": "Sub",
+      "dst": "regC",
+      "src1": "opA",
+      "src2": "opB",
+      "target": "none",
+      "invert": false
+    },
+    "16": {
+      "type": "BinOp",
+      "kind": "Mod",
+      "dst": "regB",
+      "src1": "opC",
+      "src2": "opA",
+      "target": "none",
+      "invert": false
+    },
+    "101": {
+      "type": "BinOp",
+      "kind": "BXor",
+      "dst": "regB",
+      "src1": "regA",
+      "src2": "opC",
+      "target": "none",
+      "invert": false
+    },
+    "184": {
+      "type": "BinOp",
+      "kind": "BXor",
+      "dst": "regB",
+      "src1": "regC",
+      "src2": "regA",
+      "target": "none",
+      "invert": false
+    },
+    "153": {
+      "type": "UnaryOp",
+      "kind": "Negate",
+      "dst": "regC",
+      "src1": "regA",
+      "src2": "none",
+      "target": "none",
+      "invert": false
+    },
+    "29": {
+      "type": "UnaryOp",
+      "kind": "Not",
+      "dst": "regB",
+      "src1": "regC",
+      "src2": "none",
+      "target": "none",
+      "invert": false
+    },
+    "63": {
+      "type": "UnaryOp",
+      "kind": "Len",
+      "dst": "regC",
+      "src1": "regA",
+      "src2": "none",
+      "target": "none",
+      "invert": false
+    },
+    "93": {
+      "type": "Concat",
+      "dst": "regB",
+      "src1": "regA",
+      "src2": "regC",
+      "target": "none",
+      "invert": false
+    },
+    "52": {
+      "type": "Concat",
+      "dst": "regA",
+      "src1": "opB",
+      "src2": "regC",
+      "target": "none",
+      "invert": false
+    },
+    "69": {
+      "type": "Concat",
+      "dst": "regB",
+      "src1": "regC",
+      "src2": "opA",
+      "target": "none",
+      "invert": false
+    },
+    "62": {
+      "type": "Self",
+      "dst": "regC",
+      "src1": "regB",
+      "src2": "opA",
+      "target": "none",
+      "invert": false
+    },
+    "144": {
+      "type": "CmpBool",
+      "kind": "Eq",
+      "dst": "regA",
+      "src1": "regB",
+      "src2": "regC",
+      "target": "none",
+      "invert": false
+    },
+    "175": {
+      "type": "CmpBool",
+      "kind": "Eq",
+      "dst": "regB",
+      "src1": "regA",
+      "src2": "opC",
+      "target": "none",
+      "invert": false
+    },
+    "190": {
+      "type": "CmpBool",
+      "kind": "Eq",
+      "dst": "regC",
+      "src1": "opA",
+      "src2": "regB",
+      "target": "none",
+      "invert": false
+    },
+    "21": {
+      "type": "CmpBool",
+      "kind": "Eq",
+      "dst": "regA",
+      "src1": "opC",
+      "src2": "opB",
+      "target": "none",
+      "invert": false
+    },
+    "4": {
+      "type": "CmpBool",
+      "kind": "NotEq",
+      "dst": "regC",
+      "src1": "regB",
+      "src2": "regA",
+      "target": "none",
+      "invert": false
+    },
+    "113": {
+      "type": "CmpBool",
+      "kind": "NotEq",
+      "dst": "regA",
+      "src1": "regC",
+      "src2": "opB",
+      "target": "none",
+      "invert": false
+    },
+    "102": {
+      "type": "CmpBool",
+      "kind": "NotEq",
+      "dst": "regA",
+      "src1": "opB",
+      "src2": "opC",
+      "target": "none",
+      "invert": false
+    },
+    "147": {
+      "type": "CmpBool",
+      "kind": "Lt",
+      "dst": "regC",
+      "src1": "regB",
+      "src2": "regA",
+      "target": "none",
+      "invert": false
+    },
+    "104": {
+      "type": "CmpBool",
+      "kind": "Lt",
+      "dst": "regA",
+      "src1": "regB",
+      "src2": "opC",
+      "target": "none",
+      "invert": false
+    },
+    "186": {
+      "type": "CmpBool",
+      "kind": "Lt",
+      "dst": "regA",
+      "src1": "opC",
+      "src2": "regB",
+      "target": "none",
+      "invert": false
+    },
+    "77": {
+      "type": "CmpBool",
+      "kind": "Le",
+      "dst": "regB",
+      "src1": "regA",
+      "src2": "regC",
+      "target": "none",
+      "invert": false
+    },
+    "0": {
+      "type": "CmpBool",
+      "kind": "Le",
+      "dst": "regA",
+      "src1": "regB",
+      "src2": "opC",
+      "target": "none",
+      "invert": false
+    },
+    "159": {
+      "type": "CmpBool",
+      "kind": "Le",
+      "dst": "regA",
+      "src1": "opC",
+      "src2": "regB",
+      "target": "none",
+      "invert": false
+    },
+    "174": {
+      "type": "CmpBool",
+      "kind": "Le",
+      "dst": "regC",
+      "src1": "opA",
+      "src2": "opB",
+      "target": "none",
+      "invert": false
+    },
+    "35": {
+      "type": "CmpBool",
+      "kind": "Gt",
+      "dst": "regB",
+      "src1": "regC",
+      "src2": "regA",
+      "target": "none",
+      "invert": false
+    },
+    "5": {
+      "type": "CmpBool",
+      "kind": "Gt",
+      "dst": "regA",
+      "src1": "regC",
+      "src2": "opB",
+      "target": "none",
+      "invert": false
+    },
+    "171": {
+      "type": "CmpBool",
+      "kind": "Gt",
+      "dst": "regB",
+      "src1": "opC",
+      "src2": "regA",
+      "target": "none",
+      "invert": false
+    },
+    "138": {
+      "type": "CmpBool",
+      "kind": "Gt",
+      "dst": "regB",
+      "src1": "opA",
+      "src2": "opC",
+      "target": "none",
+      "invert": false
+    },
+    "40": {
+      "type": "CmpBool",
+      "kind": "Ge",
+      "dst": "regA",
+      "src1": "regC",
+      "src2": "regB",
+      "target": "none",
+      "invert": false
+    },
+    "191": {
+      "type": "CmpBool",
+      "kind": "Ge",
+      "dst": "regC",
+      "src1": "regA",
+      "src2": "opB",
+      "target": "none",
+      "invert": false
+    },
+    "131": {
+      "type": "CmpBool",
+      "kind": "Ge",
+      "dst": "regB",
+      "src1": "opA",
+      "src2": "opC",
+      "target": "none",
+      "invert": false
+    },
+    "156": {
+      "type": "CondJump",
+      "kind": "Eq",
+      "dst": "none",
+      "src1": "regA",
+      "src2": "regB",
+      "target": "jmpC",
+      "invert": false
+    },
+    "28": {
+      "type": "CondJump",
+      "kind": "NotEq",
+      "dst": "none",
+      "src1": "regB",
+      "src2": "regC",
+      "target": "jmpA",
+      "invert": false
+    },
+    "7": {
+      "type": "CondJump",
+      "kind": "NotEq",
+      "dst": "none",
+      "src1": "regC",
+      "src2": "opA",
+      "target": "jmpB",
+      "invert": false
+    },
+    "130": {
+      "type": "CondJump",
+      "kind": "Eq",
+      "dst": "none",
+      "src1": "opA",
+      "src2": "regB",
+      "target": "jmpC",
+      "invert": false
+    },
+    "192": {
+      "type": "CondJump",
+      "kind": "Lt",
+      "dst": "none",
+      "src1": "regB",
+      "src2": "regA",
+      "target": "jmpC",
+      "invert": false
+    },
+    "194": {
+      "type": "CondJump",
+      "kind": "Lt",
+      "dst": "none",
+      "src1": "regB",
+      "src2": "regA",
+      "target": "jmpC",
+      "invert": false
+    },
+    "125": {
+      "type": "CondJump",
+      "kind": "Le",
+      "dst": "none",
+      "src1": "regC",
+      "src2": "regA",
+      "target": "jmpB",
+      "invert": true
+    },
+    "44": {
+      "type": "CondJump",
+      "kind": "Lt",
+      "dst": "none",
+      "src1": "opB",
+      "src2": "regA",
+      "target": "jmpC",
+      "invert": true
+    },
+    "110": {
+      "type": "CondJump",
+      "kind": "Le",
+      "dst": "none",
+      "src1": "opA",
+      "src2": "regB",
+      "target": "jmpC",
+      "invert": false
+    },
+    "182": {
+      "type": "CondJump",
+      "kind": "Le",
+      "dst": "none",
+      "src1": "opC",
+      "src2": "regB",
+      "target": "jmpA",
+      "invert": true
+    },
+    "15": {
+      "type": "CondJump",
+      "kind": "Le",
+      "dst": "none",
+      "src1": "opB",
+      "src2": "regA",
+      "target": "jmpC",
+      "invert": false
+    },
+    "72": {
+      "type": "CondJump",
+      "kind": "Eq",
+      "dst": "none",
+      "src1": "regC",
+      "src2": "opA",
+      "target": "jmpB",
+      "invert": false
+    },
+    "108": {
+      "type": "CondJump",
+      "kind": "Le",
+      "dst": "none",
+      "src1": "opC",
+      "src2": "regA",
+      "target": "jmpB",
+      "invert": true
+    },
+    "188": {
+      "type": "CondJump",
+      "kind": "Le",
+      "dst": "none",
+      "src1": "opC",
+      "src2": "regA",
+      "target": "jmpB",
+      "invert": false
+    },
+    "121": {
+      "type": "TestJump",
+      "dst": "none",
+      "src1": "regA",
+      "src2": "none",
+      "target": "jmpC",
+      "invert": false,
+      "testCondition": true
+    },
+    "146": {
+      "type": "TestJump",
+      "dst": "none",
+      "src1": "regA",
+      "src2": "none",
+      "target": "jmpB",
+      "invert": false,
+      "testCondition": false
+    },
+    "148": {
+      "type": "TestJump",
+      "dst": "none",
+      "src1": "regA",
+      "src2": "none",
+      "target": "jmpB",
+      "invert": false,
+      "testCondition": false
+    },
+    "187": {
+      "type": "Jump",
+      "dst": "none",
+      "src1": "none",
+      "src2": "none",
+      "target": "jmpB",
+      "invert": false
+    },
+    "2": {
+      "type": "Call",
+      "dst": "regB",
+      "src1": "none",
+      "src2": "none",
+      "target": "none",
+      "argSlot": "C",
+      "retSlot": "A",
+      "invert": false
+    },
+    "33": {
+      "type": "Call",
+      "dst": "regC",
+      "src1": "none",
+      "src2": "none",
+      "target": "none",
+      "fixedArgs": 0,
+      "fixedRets": 0,
+      "invert": false
+    },
+    "41": {
+      "type": "Call",
+      "dst": "regA",
+      "src1": "none",
+      "src2": "none",
+      "target": "none",
+      "fixedArgs": 1,
+      "fixedRets": 0,
+      "invert": false
+    },
+    "56": {
+      "type": "Call",
+      "dst": "regA",
+      "src1": "none",
+      "src2": "none",
+      "target": "none",
+      "fixedArgs": 2,
+      "fixedRets": 0,
+      "invert": false
+    },
+    "107": {
+      "type": "Call",
+      "dst": "regA",
+      "src1": "none",
+      "src2": "none",
+      "target": "none",
+      "fixedArgs": 2,
+      "fixedRets": 1,
+      "invert": false
+    },
+    "114": {
+      "type": "Call",
+      "dst": "regC",
+      "src1": "none",
+      "src2": "none",
+      "target": "none",
+      "fixedArgs": 0,
+      "fixedRets": 1,
+      "invert": false
+    },
+    "118": {
+      "type": "Call",
+      "dst": "regB",
+      "src1": "none",
+      "src2": "none",
+      "target": "none",
+      "fixedArgs": -1,
+      "fixedRets": 0,
+      "invert": false
+    },
+    "124": {
+      "type": "Call",
+      "dst": "regB",
+      "src1": "none",
+      "src2": "none",
+      "target": "none",
+      "fixedArgs": -1,
+      "fixedRets": 1,
+      "invert": false
+    },
+    "139": {
+      "type": "Call",
+      "dst": "regA",
+      "src1": "none",
+      "src2": "none",
+      "target": "none",
+      "fixedArgs": -1,
+      "fixedRets": 0,
+      "invert": false
+    },
+    "141": {
+      "type": "Call",
+      "dst": "regA",
+      "src1": "none",
+      "src2": "none",
+      "target": "none",
+      "fixedArgs": -1,
+      "fixedRets": 1,
+      "invert": false
+    },
+    "167": {
+      "type": "Call",
+      "dst": "regC",
+      "src1": "none",
+      "src2": "none",
+      "target": "none",
+      "fixedArgs": 1,
+      "fixedRets": 1,
+      "invert": false
+    },
+    "66": {
+      "type": "TailCall",
+      "dst": "regB",
+      "src1": "none",
+      "src2": "none",
+      "target": "none",
+      "fixedArgs": -1,
+      "invert": false
+    },
+    "23": {
+      "type": "TailCall",
+      "dst": "regC",
+      "src1": "none",
+      "src2": "none",
+      "target": "none",
+      "fixedArgs": 1,
+      "invert": false
+    },
+    "128": {
+      "type": "TailCall",
+      "dst": "regA",
+      "src1": "none",
+      "src2": "none",
+      "target": "none",
+      "fixedArgs": -1,
+      "invert": false
+    },
+    "178": {
+      "type": "TailCall",
+      "dst": "regC",
+      "src1": "none",
+      "src2": "none",
+      "target": "none",
+      "fixedArgs": 0,
+      "invert": false
+    },
+    "170": {
+      "type": "Return",
+      "dst": "none",
+      "src1": "none",
+      "src2": "none",
+      "target": "none",
+      "fixedArgs": 0,
+      "invert": false
+    },
+    "75": {
+      "type": "Return",
+      "dst": "regA",
+      "src1": "none",
+      "src2": "none",
+      "target": "none",
+      "fixedArgs": 1,
+      "invert": false
+    },
+    "152": {
+      "type": "Return",
+      "dst": "regA",
+      "src1": "none",
+      "src2": "none",
+      "target": "none",
+      "fixedArgs": -1,
+      "invert": false
+    },
+    "85": {
+      "type": "ForPrep",
+      "dst": "none",
+      "src1": "regA",
+      "src2": "none",
+      "target": "jmpB",
+      "invert": false
+    },
+    "57": {
+      "type": "ForLoop",
+      "dst": "none",
+      "src1": "regA",
+      "src2": "none",
+      "target": "jmpB",
+      "invert": false
+    },
+    "137": {
+      "type": "ForLoop",
+      "dst": "none",
+      "src1": "regA",
+      "src2": "none",
+      "target": "jmpB",
+      "invert": false
+    },
+    "103": {
+      "type": "IterPrep",
+      "dst": "none",
+      "src1": "regA",
+      "src2": "none",
+      "target": "jmpB",
+      "invert": false
+    },
+    "96": {
+      "type": "TForLoop",
+      "dst": "none",
+      "src1": "regA",
+      "src2": "none",
+      "target": "jmpB",
+      "invert": false
+    },
+    "106": {
+      "type": "SetList",
+      "dst": "none",
+      "src1": "regA",
+      "src2": "regC",
+      "target": "none",
+      "invert": false
+    },
+    "140": {
+      "type": "SetList",
+      "dst": "none",
+      "src1": "regA",
+      "src2": "regC",
+      "target": "none",
+      "invert": false
+    },
+    "30": {
+      "type": "CloseUpvals",
+      "dst": "none",
+      "src1": "regA",
+      "src2": "none",
+      "target": "none",
+      "invert": false
+    },
+    "67": {
+      "type": "Closure",
+      "dst": "regB",
+      "src1": "none",
+      "src2": "none",
+      "target": "none",
+      "invert": false
+    },
+    "181": {
+      "type": "Closure",
+      "dst": "regB",
+      "src1": "none",
+      "src2": "none",
+      "target": "none",
+      "invert": false
+    },
+    "14": {
+      "type": "Vararg",
+      "dst": "regA",
+      "src1": "regC",
+      "src2": "none",
+      "target": "none",
+      "invert": false
+    },
+    "89": {
+      "type": "Vararg",
+      "dst": "regA",
+      "src1": "regC",
+      "src2": "none",
+      "target": "none",
+      "invert": false
+    },
+    "115": {
+      "type": "Vararg",
+      "dst": "regA",
+      "src1": "regC",
+      "src2": "none",
+      "target": "none",
+      "invert": false
+    },
+    "160": {
+      "type": "Vararg",
+      "dst": "regA",
+      "src1": "regC",
+      "src2": "none",
+      "target": "none",
+      "invert": false
+    },
+    "189": {
+      "type": "Nop",
+      "dst": "none",
+      "src1": "none",
+      "src2": "none",
+      "target": "none",
+      "invert": false,
+      "comment": "internal_params"
+    },
+    "53": {
+      "type": "SetGlobal",
+      "dst": "none",
+      "src1": "opC",
+      "src2": "regA",
+      "target": "none",
+      "invert": false
+    },
+    "60": {
+      "type": "BinOp",
+      "kind": "Sub",
+      "dst": "regA",
+      "src1": "regC",
+      "src2": "opB",
+      "target": "none",
+      "invert": false
+    },
+    "70": {
+      "type": "BinOp",
+      "kind": "Mul",
+      "dst": "regB",
+      "src1": "regC",
+      "src2": "regA",
+      "target": "none",
+      "invert": false
+    },
+    "71": {
+      "type": "SetUpval",
+      "dst": "upvalB",
+      "src1": "regA",
+      "src2": "none",
+      "target": "none",
+      "invert": false
+    },
+    "91": {
+      "type": "Self",
+      "dst": "regB",
+      "src1": "regC",
+      "src2": "opA",
+      "target": "none",
+      "invert": false
+    },
+    "157": {
+      "type": "CmpBool",
+      "kind": "NotEq",
+      "dst": "regA",
+      "src1": "regC",
+      "src2": "opB",
+      "target": "none",
+      "invert": false
+    },
+    "166": {
+      "type": "SetTable",
+      "dst": "regA",
+      "src1": "opB",
+      "src2": "opC",
+      "target": "none",
+      "invert": false
+    },
+    "173": {
+      "type": "BinOp",
+      "kind": "Add",
+      "dst": "regA",
+      "src1": "opC",
+      "src2": "opB",
+      "target": "none",
+      "invert": false
+    },
+    "13": {
+      "type": "Nop",
+      "dst": "none",
+      "src1": "none",
+      "src2": "none",
+      "target": "none",
+      "invert": false,
+      "comment": "internal"
+    },
+    "34": {
+      "type": "Nop",
+      "dst": "none",
+      "src1": "none",
+      "src2": "none",
+      "target": "none",
+      "invert": false,
+      "comment": "internal"
+    },
+    "74": {
+      "type": "Nop",
+      "dst": "none",
+      "src1": "none",
+      "src2": "none",
+      "target": "none",
+      "invert": false,
+      "comment": "internal"
+    },
+    "81": {
+      "type": "Nop",
+      "dst": "none",
+      "src1": "none",
+      "src2": "none",
+      "target": "none",
+      "invert": false,
+      "comment": "internal"
+    },
+    "99": {
+      "type": "Nop",
+      "dst": "none",
+      "src1": "none",
+      "src2": "none",
+      "target": "none",
+      "invert": false,
+      "comment": "internal"
+    },
+    "150": {
+      "type": "Nop",
+      "dst": "none",
+      "src1": "none",
+      "src2": "none",
+      "target": "none",
+      "invert": false,
+      "comment": "internal"
+    },
+    "164": {
+      "type": "Nop",
+      "dst": "none",
+      "src1": "none",
+      "src2": "none",
+      "target": "none",
+      "invert": false,
+      "comment": "internal"
+    }
+  },
+  "fragmentMap": {
+    "42": {
+      "g": "RegFile",
+      "commit": false
+    },
+    "61": {
+      "g": "RegC",
+      "commit": false
+    },
+    "112": {
+      "q": "Env",
+      "commit": false
+    },
+    "6": {
+      "f": "RegC",
+      "commit": false
+    },
+    "24": {
+      "f": "OpA",
+      "commit": false
+    },
+    "9": {
+      "g": "RegFile",
+      "f": "RegA",
+      "commit": false
+    },
+    "127": {
+      "g": "RegFile",
+      "f": "RegB",
+      "commit": false
+    },
+    "162": {
+      "f": "Const:-1",
+      "commit": false
+    },
+    "1": {
+      "f": "RegC",
+      "q": "RegFile",
+      "commit": false
+    },
+    "47": {
+      "o": "RegC",
+      "commit": false
+    },
+    "36": {
+      "q": "OpC",
+      "commit": false
+    },
+    "68": {
+      "o": "RegFile",
+      "commit": false
+    },
+    "73": {
+      "v": "RegA",
+      "commit": false
+    },
+    "88": {
+      "f": "OpB",
+      "commit": false
+    },
+    "100": {
+      "o": "RegA",
+      "commit": false
+    },
+    "109": {
+      "o": "OpB",
+      "commit": false
+    },
+    "122": {
+      "q": "RegFile",
+      "commit": false
+    },
+    "165": {
+      "v": "RegA",
+      "commit": false
+    },
+    "185": {
+      "q": "RegFile",
+      "o": "RegA",
+      "commit": false
+    },
+    "46": {
+      "commit": true
+    },
+    "55": {
+      "commit": true
+    },
+    "76": {
+      "commit": true
+    },
+    "79": {
+      "commit": true
+    },
+    "120": {
+      "commit": true
+    },
+    "123": {
+      "commit": true
+    },
+    "149": {
+      "commit": true
+    },
+    "183": {
+      "commit": true
+    }
+  },
+  "nopOpcodes": [
+    13,
+    34,
+    74,
+    81,
+    99,
+    150,
+    164
+  ]
+}
