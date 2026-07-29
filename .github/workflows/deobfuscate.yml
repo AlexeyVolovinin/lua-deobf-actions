@@ -4,13 +4,20 @@ on:
   workflow_dispatch:
     inputs:
       script:
-        description: 'Lua script content (base64) or leave empty to use input.lua'
+        description: 'Lua script (base64)'
+        required: true
+        default: ''
+      obfuscator:
+        description: 'Obfuscator type: auto|luraph|prometheus|moonsec|ironbrew|medal'
+        required: true
+        default: 'auto'
+      channel_id:
+        description: 'Discord channel ID for response'
         required: false
         default: ''
-      webhook_url:
-        description: 'Discord webhook URL'
-        required: false
-        default: ''
+
+env:
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   deobfuscate:
@@ -20,112 +27,106 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup runtimes
+      - name: Setup all runtimes
         run: |
-          sudo apt-get update -qq && sudo apt-get install -y -qq lua5.4 luajit
-          dotnet --version 2>/dev/null || echo "no dotnet"
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq lua5.4 luajit unzip
+          dotnet --version || true
           python3 --version
           node --version
           java -version 2>&1 | head -1
-          lua -v 2>&1 || true
 
       - name: Setup .NET
+        if: ${{ github.event.inputs.obfuscator == 'auto' || github.event.inputs.obfuscator == 'luraph' || github.event.inputs.obfuscator == 'ironbrew' }}
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.0'
 
       - name: Setup Rust
+        if: ${{ github.event.inputs.obfuscator == 'auto' || github.event.inputs.obfuscator == 'medal' }}
         uses: dtolnay/rust-toolchain@stable
 
       - name: Install Node deps
         run: |
-          cd src/lua-deobf && npm install 2>/dev/null || true
-          cd ../white/white && npm install 2>/dev/null || true
+          cd src/white && npm install --production 2>/dev/null || true
+          cd ../lua-deobf/Lua-Deobfuscator && npm install --production 2>/dev/null || true
 
       - name: Write input script
         run: |
-          if [ -n "${{ github.event.inputs.script }}" ]; then
-            echo "${{ github.event.inputs.script }}" | base64 -d > input.lua
-          else
-            echo 'print("Hello from GitHub Actions!")' > input.lua
-          fi
-          echo "=== INPUT SCRIPT ==="
-          cat input.lua
+          echo "${{ github.event.inputs.script }}" | base64 -d > input.lua 2>/dev/null || echo 'print("err")' > input.lua
+          echo "=== INPUT ==="
+          wc -c input.lua
+          head -5 input.lua
 
       - name: Detect obfuscator
         run: |
-          python3 src/detect.py input.lua 2>&1 | tee detection_result.txt
+          python3 src/detect.py input.lua 2>&1 | tee detection.txt
 
-      - name: Run Python deobfuscator
+      - name: Run Python deobfuscator (always)
         run: |
-          python3 src/deobfuscator.py input.lua output_py.lua 2>&1 | tee py_result.txt || echo "PYTHON_DEOB_FAILED"
+          python3 src/deobfuscator.py input.lua output_py.lua 2>&1
 
-      - name: Build & Run White (JS/Prometheus)
+      - name: White (Prometheus/Luraph JS)
+        if: ${{ github.event.inputs.obfuscator == 'auto' || github.event.inputs.obfuscator == 'prometheus' || github.event.inputs.obfuscator == 'luraph' }}
         run: |
-          cd src/white
-          cp ../../input.lua .
-          node main.js 2>&1 | tee /tmp/white_output.txt || echo "WHITE_FAILED"
+          cd src/white && cp ../../input.lua . && node main.js 2>&1 | tee /tmp/white.log || echo "WHITE: no output"
 
-      - name: Build Luraph Java deobfuscator
+      - name: Luraph C# deobfuscator
+        if: ${{ github.event.inputs.obfuscator == 'auto' || github.event.inputs.obfuscator == 'luraph' }}
         run: |
-          cd src/luraph
-          mkdir -p build
-          javac -cp "lib/*" -d build src/*.java src/**/*.java 2>&1 | tail -5 || echo "JAVA_BUILD_FAILED"
-          java -cp "build:lib/*" Main ../../input.lua 2>&1 | tee /tmp/luraph_output.txt || echo "LURAPH_FAILED"
+          cd src/luraph-csharp
+          dotnet restore 2>/dev/null
+          dotnet build -c Release -o out 2>&1 | tail -3
+          dotnet out/LuraphDeobfuscator.dll --input ../../input.lua 2>&1 | tee /tmp/luraph_cs.log || echo "LURAPH_CS: no output"
 
-      - name: Build & Run Ironbrew C# deobfuscator
+      - name: Ironbrew C# deobfuscator
+        if: ${{ github.event.inputs.obfuscator == 'auto' || github.event.inputs.obfuscator == 'ironbrew' }}
         run: |
           cd src/ironbrew/IronbrewDeobfuscator
           dotnet restore 2>/dev/null
-          dotnet build -c Release 2>&1 | tail -5
-          dotnet run --project . -- -t ib2 -f ../../../input.lua 2>&1 | tee /tmp/ironbrew_output.txt || echo "IB2_FAILED"
+          dotnet build -c Release -o out 2>&1 | tail -3
+          dotnet out/IronbrewDeobfuscator.dll -t ib2 -f ../../../input.lua 2>&1 | tee /tmp/ib2.log || echo "IB2: no output"
 
-      - name: Build & Run medal-decompiler (Rust)
+      - name: medal-decompiler (Rust)
+        if: ${{ github.event.inputs.obfuscator == 'auto' || github.event.inputs.obfuscator == 'medal' }}
         run: |
           cd src/medal-decompiler
-          cargo build --release 2>&1 | tail -5 || echo "MEDAL_BUILD_FAILED"
-          ./target/release/medal-decompile ../../input.lua 2>&1 | tee /tmp/medal_output.txt || echo "MEDAL_FAILED"
+          cargo build --release 2>&1 | tail -3
+          echo "medal: need specific invocation" > /tmp/medal.log || true
 
-      - name: Collect results
+      - name: Lua-Deobfuscator (MoonSec V2 / IronBrew JS)
+        if: ${{ github.event.inputs.obfuscator == 'auto' || github.event.inputs.obfuscator == 'moonsec' || github.event.inputs.obfuscator == 'ironbrew' }}
+        run: |
+          cd src/lua-deobf/Lua-Deobfuscator
+          cp ../../input.lua .
+          node index.js 2>&1 | tee /tmp/luadeobf.log || echo "LUA_DEOBF: no output"
+
+      - name: Collect all results
         run: |
           echo "=== RESULTS ===" > results.md
-          echo "Date: $(date)" >> results.md
+          date >> results.md
+          echo "Obfuscator: ${{ github.event.inputs.obfuscator }}" >> results.md
           echo "" >> results.md
-          echo "## Detection" >> results.md
-          cat detection_result.txt 2>/dev/null >> results.md
-          echo "" >> results.md
-          echo "## Python Deobfuscator" >> results.md
-          cat py_result.txt 2>/dev/null >> results.md
-          echo "" >> results.md
-          echo "## White (JS/Prometheus)" >> results.md
-          cat /tmp/white_output.txt 2>/dev/null >> results.md
-          echo "" >> results.md
-          echo "## Luraph" >> results.md
-          cat /tmp/luraph_output.txt 2>/dev/null >> results.md
-          echo "" >> results.md
-          echo "## Ironbrew" >> results.md
-          cat /tmp/ironbrew_output.txt 2>/dev/null >> results.md
-          echo "" >> results.md
-          echo "## Medal (Rust)" >> results.md
-          cat /tmp/medal_output.txt 2>/dev/null >> results.md
+          for f in /tmp/*.log detection.txt output_py.lua; do
+            echo "--- $(basename $f) ---" >> results.md
+            head -100 "$f" 2>/dev/null >> results.md
+            echo "" >> results.md
+          done
 
-      - name: Upload results
+      - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: deobfuscated-output
+          name: deobf-results-${{ github.run_id }}-${{ github.run_attempt }}
           path: |
             output_py.lua
-            output.luac
-            results.md
             input.lua
+            results.md
 
-      - name: Send Discord notification
+      - name: Send Discord result
+        env:
+          WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK }}
         run: |
-          WEBHOOK="${{ github.event.inputs.webhook_url }}"
-          if [ -z "$WEBHOOK" ]; then
-            WEBHOOK="https://discord.com/api/webhooks/1532038329254543475/QbPrOo0Bzdg-GBgNd3zs0lB4OY3ir_fpDEcZ5CdC5NWwiKfKG0tIoA043KbwxqFmXdP-"
-          fi
-          SUMMARY=$(head -50 results.md 2>/dev/null | tr '\n' ' ' | sed 's/"/\\"/g' | cut -c1-1900)
+          if [ -z "$WEBHOOK_URL" ]; then echo "No webhook secret set"; exit 0; fi
           curl -s -X POST -H "Content-Type: application/json" \
-            -d "{\"content\":\"**Deobfuscation Complete**\nRepo: ${{ github.repository }}\nRun: ${{ github.run_id }}\n\`\`\`$SUMMARY\`\`\`\"}" \
-            "$WEBHOOK" || true
+            -d "{\"content\":\"**✅ Деобф \\\"${{ github.event.inputs.obfuscator }}\\\" завершен!**\nБайт: $(wc -c < input.lua) → $(wc -c < output_py.lua 2>/dev/null)\n\`\`\`$(head -20 output_py.lua 2>/dev/null | sed 's/"/\\"/g' | tr '\n' ' ' | cut -c1-1500)\`\`\`\"}" \
+            "$WEBHOOK_URL" || true
