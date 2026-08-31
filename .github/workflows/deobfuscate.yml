@@ -3,14 +3,10 @@ name: Deobfuscate Lua Script
 on:
   workflow_dispatch:
     inputs:
-      script:
-        description: 'Lua script (base64)'
-        required: true
-        default: ''
       obfuscator:
         description: 'Obfuscator type: auto|luraph|prometheus|moonsec|ironbrew|medal'
         required: true
-        default: 'auto'
+        default: 'luraph'
       channel_id:
         description: 'Discord channel ID for response'
         required: false
@@ -53,7 +49,11 @@ jobs:
 
       - name: Write input script
         run: |
-          echo "${{ github.event.inputs.script }}" | base64 -d > input.lua 2>/dev/null || echo 'print("err")' > input.lua
+          if [ -f input.lua ]; then
+            echo "Using input.lua from repository"
+          else
+            echo 'print("err: input.lua not found in repo")' > input.lua
+          fi
           echo "=== INPUT ==="
           wc -c input.lua
           head -5 input.lua
